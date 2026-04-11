@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>리본마케팅 | 소상공인·전문직을 위한 마케팅 파트너</title>
+
+    <meta property="og:title" content="리본마케팅 | 소상공인·전문직을 위한 마케팅 파트너">
+    <meta property="og:description" content="블로그·플레이스·홍보단까지. 검증된 마케팅 솔루션으로 매출을 올려드립니다.">
+    <meta property="og:image" content="https://i.ibb.co/FbjFQZLm/image.png">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://i.ibb.co/FbjFQZLm/image.png">
+    <link rel="icon" type="image/png" href="https://i.ibb.co/FbjFQZLm/image.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --primary:#2d5a3d;--primary-light:#3a7450;--primary-dark:#1e3f2b;
+            --gold:#c9a96e;--gold-light:#d4ba88;
+            --bg:#fafaf7;--white:#ffffff;--gray-50:#f8f8f5;--gray-100:#f0efe9;
+            --gray-200:#e2e0d8;--gray-400:#a8a598;--gray-600:#6b6860;--gray-800:#2c2b28;
+            --radius:12px;--radius-lg:20px;--shadow:0 2px 12px rgba(0,0,0,.06);
+            --shadow-lg:0 8px 30px rgba(0,0,0,.1);
+        }
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{font-family:'Noto Sans KR',sans-serif;background:var(--bg);color:var(--gray-800);line-height:1.7;overflow-x:hidden;}
+        a{text-decoration:none;color:inherit;}
+        img{max-width:100%;height:auto;display:block;}
+
+        /* ── Navbar ── */
+        .navbar{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(255,255,255,.85);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:.3s;}
+        .navbar.scrolled{border-bottom-color:var(--gray-200);box-shadow:var(--shadow);}
+        .nav-inner{max-width:1100px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:60px;}
+        .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem;color:var(--primary);}
+        .logo img{height:36px;width:36px;object-fit:contain;border-radius:8px;}
+        .nav-links{display:flex;align-items:center;gap:28px;font-size:.88rem;font-weight:500;}
+        .nav-links a{color:var(--gray-600);transition:.2s;}
+        .nav-links a:hover{color:var(--primary);}
+        .nav-cta{background:var(--primary);color:#fff!important;padding:8px 20px;border-radius:50px;font-weight:600;transition:.2s;}
+        .nav-cta:hover{background:var(--primary-light);}
+        .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;}
+        .hamburger span{display:block;width:22px;height:2px;background:var(--gray-800);border-radius:2px;}
+
+        /* ── Hero ── */
+        .hero{padding:100px 20px 60px;background:linear-gradient(160deg,#f0f7f2 0%,#fafaf7 50%,#f7f4ed 100%);}
+        .hero-inner{max-width:1100px;margin:auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--gray-200);padding:6px 16px;border-radius:50px;font-size:.8rem;font-weight:600;color:var(--primary);margin-bottom:20px;}
+        .dot{width:7px;height:7px;background:var(--gold);border-radius:50%;display:inline-block;}
+        .hero h1{font-size:2.4rem;font-weight:900;line-height:1.35;letter-spacing:-.5px;margin-bottom:18px;}
+        .highlight{color:var(--primary);position:relative;}
+        .hero-desc{font-size:1rem;color:var(--gray-600);margin-bottom:28px;line-height:1.8;}
+        .hero-buttons{display:flex;gap:12px;flex-wrap:wrap;}
+        .btn-primary{background:var(--primary);color:#fff;padding:13px 28px;border-radius:50px;font-weight:700;font-size:.92rem;transition:.2s;display:inline-block;}
+        .btn-primary:hover{background:var(--primary-light);transform:translateY(-1px);}
+        .btn-secondary{border:1.5px solid var(--gray-200);color:var(--gray-800);padding:13px 28px;border-radius:50px;font-weight:600;font-size:.92rem;transition:.2s;display:inline-block;background:var(--white);}
+        .btn-secondary:hover{border-color:var(--primary);color:var(--primary);}
+        .hero-card{background:var(--white);border-radius:var(--radius-lg);padding:28px;box-shadow:var(--shadow-lg);position:relative;}
+        .hero-card-label{font-size:.82rem;font-weight:700;color:var(--gray-600);margin-bottom:16px;}
+        .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+        .stat-item{text-align:center;padding:12px;background:var(--gray-50);border-radius:var(--radius);}
+        .stat-number{font-size:1.6rem;font-weight:900;color:var(--primary);}
+        .stat-number.accent{color:var(--gold);}
+        .stat-desc{font-size:.75rem;color:var(--gray-400);margin-top:2px;font-weight:500;}
+        .hero-card-stack{position:relative;}
+        .floating-badge{position:absolute;background:var(--white);padding:10px 16px;border-radius:50px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:8px;font-size:.78rem;font-weight:600;white-space:nowrap;}
+        .floating-badge.top-right{top:-12px;right:-10px;}
+        .floating-badge.bottom-left{bottom:-12px;left:-10px;}
+        .floating-icon{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;}
+        .floating-icon.blue{background:#e8f0fe;}
+        .floating-icon.green{background:#e6f4ea;}
+
+        /* ── Sections Common ── */
+        .section-inner{max-width:1100px;margin:auto;padding:0 24px;}
+        .text-center{text-align:center;}
+        .section-label{font-size:.78rem;font-weight:700;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:8px;}
+        .section-title{font-size:1.8rem;font-weight:900;margin-bottom:12px;line-height:1.35;}
+        .section-subtitle{font-size:.95rem;color:var(--gray-600);max-width:540px;line-height:1.7;}
+        .mx-auto{margin-left:auto;margin-right:auto;}
+
+        /* ── About ── */
+        .about-section{padding:70px 20px;background:var(--white);}
+        .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:40px;}
+        .about-logo-area{display:flex;align-items:center;justify-content:center;}
+        .about-logo-area img{max-width:280px;border-radius:var(--radius-lg);}
+        .about-text h3{font-size:1.3rem;font-weight:800;margin-bottom:14px;color:var(--primary);}
+        .about-text p{color:var(--gray-600);font-size:.92rem;line-height:1.85;margin-bottom:16px;}
+        .about-stats{display:flex;gap:32px;margin-top:20px;}
+        .about-stat{text-align:center;}
+        .about-stat .num{font-size:1.5rem;font-weight:900;color:var(--primary);}
+        .about-stat .label{font-size:.75rem;color:var(--gray-400);margin-top:2px;}
+
+        /* ── Pain ── */
+        .pain-section{padding:70px 20px;background:var(--gray-50);}
+        .pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;}
+        .pain-card{background:var(--white);padding:28px;border-radius:var(--radius-lg);box-shadow:var(--shadow);text-align:center;}
+        .pain-icon{font-size:2rem;margin-bottom:12px;}
+        .pain-card h3{font-size:1rem;font-weight:800;margin-bottom:8px;}
+        .pain-card p{font-size:.85rem;color:var(--gray-600);line-height:1.7;}
+
+        /* ── Services ── */
+        .services-section{padding:70px 20px;background:var(--white);}
+        .service-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:36px;}
+        .service-card{background:var(--gray-50);border-radius:var(--radius-lg);overflow:hidden;transition:.3s;border:1.5px solid transparent;}
+        .service-card:hover{border-color:var(--primary);transform:translateY(-4px);box-shadow:var(--shadow-lg);}
+        .service-card-body{padding:28px;}
+        .service-badge{display:inline-block;background:var(--primary);color:#fff;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:50px;margin-bottom:10px;}
+        .service-card h3{font-size:1.05rem;font-weight:800;margin-bottom:8px;}
+        .service-card p{font-size:.84rem;color:var(--gray-600);line-height:1.7;margin-bottom:14px;}
+        .service-list{list-style:none;padding:0;}
+        .service-list li{font-size:.8rem;color:var(--gray-600);padding:3px 0;padding-left:16px;position:relative;}
+        .service-list li::before{content:"✓";position:absolute;left:0;color:var(--primary);font-weight:700;font-size:.75rem;}
+
+        /* ── Case Study ── */
+        .case-section{padding:70px 20px;background:var(--gray-50);}
+        .case-group{margin-top:48px;}
+        .case-group + .case-group{margin-top:64px;}
+        .case-group-header{max-width:900px;margin:0 auto 24px;padding:0 24px;}
+        .case-group-title{font-size:1.2rem;font-weight:800;color:var(--primary);margin-bottom:4px;}
+        .case-group-desc{font-size:.9rem;color:var(--gray-600);line-height:1.7;}
+        .case-group-tag{display:inline-block;background:var(--gold);color:#fff;font-size:.72rem;font-weight:700;padding:4px 12px;border-radius:50px;margin-bottom:10px;}
+
+        .case-stack{max-width:900px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;gap:20px;}
+        .case-img-wrap{background:var(--white);border-radius:var(--radius-lg);box-shadow:var(--shadow);overflow:hidden;}
+        .case-img-wrap img{width:100%;display:block;}
+        .case-img-caption{padding:14px 20px;font-size:.84rem;color:var(--gray-600);line-height:1.6;border-top:1px solid var(--gray-100);}
+
+        /* 발레학원 세로 이미지 크게 */
+        .case-vertical-stack{max-width:480px;margin:0 auto;display:flex;flex-direction:column;gap:20px;}
+        .case-vertical-stack .case-img-wrap img{width:100%;display:block;}
+
+        /* ── Industries ── */
+        .industries-section{padding:70px 20px;background:var(--white);}
+        .industry-tags{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px;}
+        .industry-tag{background:var(--gray-50);border:1.5px solid var(--gray-200);padding:12px 24px;border-radius:50px;font-size:.88rem;font-weight:600;transition:.2s;cursor:default;}
+        .industry-tag:hover{border-color:var(--primary);color:var(--primary);background:#f0f7f2;}
+
+        /* ── Results ── */
+        .results-section{padding:70px 20px;background:var(--primary);color:#fff;}
+        .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:36px;}
+        .result-card{text-align:center;padding:28px 16px;}
+        .result-number{font-size:2.2rem;font-weight:900;color:var(--gold);}
+        .result-label{font-size:.85rem;margin-top:6px;opacity:.85;}
+
+        /* ── Process ── */
+        .process-section{padding:70px 20px;background:var(--gray-50);}
+        .process-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;margin-top:36px;}
+        .process-step{background:var(--white);padding:24px 16px;border-radius:var(--radius-lg);text-align:center;box-shadow:var(--shadow);}
+        .step-num{font-size:.7rem;font-weight:800;color:var(--gold);letter-spacing:1px;margin-bottom:8px;}
+        .step-icon{font-size:1.6rem;margin-bottom:10px;}
+        .process-step h4{font-size:.88rem;font-weight:800;margin-bottom:6px;}
+        .process-step p{font-size:.76rem;color:var(--gray-600);line-height:1.6;}
+
+        /* ── Philosophy ── */
+        .philosophy-section{padding:70px 20px;background:var(--white);}
+        .philosophy-card{max-width:700px;margin:32px auto 0;background:var(--gray-50);border-left:4px solid var(--gold);padding:32px;border-radius:0 var(--radius-lg) var(--radius-lg) 0;}
+        .philosophy-card p{font-size:.95rem;color:var(--gray-600);line-height:1.9;margin-bottom:12px;}
+        .philosophy-card .author{font-weight:700;color:var(--primary);font-size:.88rem;}
+
+        /* ── FAQ ── */
+        .faq-section{padding:70px 20px;background:var(--gray-50);}
+        .faq-list{max-width:700px;margin:32px auto 0;}
+        .faq-item{background:var(--white);border-radius:var(--radius);margin-bottom:10px;box-shadow:var(--shadow);overflow:hidden;}
+        .faq-q{padding:18px 24px;font-weight:700;font-size:.92rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:.2s;}
+        .faq-q:hover{color:var(--primary);}
+        .faq-a{padding:0 24px;max-height:0;overflow:hidden;transition:.3s;font-size:.86rem;color:var(--gray-600);line-height:1.8;}
+        .faq-item.open .faq-a{padding:0 24px 18px;max-height:300px;}
+        .faq-arrow{transition:.3s;font-size:.8rem;}
+        .faq-item.open .faq-arrow{transform:rotate(180deg);}
+
+        /* ── CTA (이미지 크게 + 버튼 오버레이) ── */
+        .cta-section{padding:60px 20px;background:linear-gradient(135deg,var(--primary) 0%,var(--primary-dark) 100%);color:#fff;text-align:center;}
+        .cta-section h2{font-size:1.8rem;font-weight:900;margin-bottom:12px;}
+        .cta-section > .section-inner > p{font-size:.95rem;opacity:.85;margin-bottom:32px;max-width:500px;margin-left:auto;margin-right:auto;}
+        .cta-banner-area{position:relative;max-width:800px;margin:0 auto;border-radius:var(--radius-lg);overflow:hidden;box-shadow:0 8px 40px rgba(0,0,0,.3);}
+        .cta-banner-area img{width:100%;display:block;}
+        .cta-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.25);transition:.3s;}
+        .cta-overlay:hover{background:rgba(0,0,0,.35);}
+        .btn-gold{background:var(--gold);color:#fff;padding:18px 44px;border-radius:50px;font-weight:800;font-size:1.1rem;display:inline-block;transition:.2s;box-shadow:0 4px 20px rgba(0,0,0,.3);}
+        .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 6px 28px rgba(0,0,0,.35);}
+
+        /* ── Footer ── */
+        .footer{padding:40px 20px;background:var(--gray-800);color:var(--gray-400);font-size:.8rem;text-align:center;}
+        .footer-logo{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:12px;}
+        .footer-logo img{height:28px;width:28px;object-fit:contain;border-radius:6px;}
+        .footer-logo span{color:#fff;font-weight:800;font-size:1rem;}
+        .footer-links{display:flex;gap:20px;justify-content:center;margin-bottom:16px;}
+        .footer-links a{color:var(--gray-400);transition:.2s;}
+        .footer-links a:hover{color:#fff;}
+
+        /* ── Reveal ── */
+        .reveal{opacity:0;transform:translateY(24px);transition:.7s;}
+        .reveal.visible{opacity:1;transform:none;}
+
+        /* ── Responsive ── */
+        @media(max-width:900px){
+            .hero-inner{grid-template-columns:1fr;}
+            .hero h1{font-size:1.8rem;}
+            .hero-visual{display:none;}
+            .about-grid{grid-template-columns:1fr;}
+            .pain-grid,.service-cards{grid-template-columns:1fr;}
+            .results-grid{grid-template-columns:1fr 1fr;}
+            .process-steps{grid-template-columns:1fr 1fr;}
+            .nav-links{display:none;position:absolute;top:60px;left:0;width:100%;background:var(--white);flex-direction:column;padding:20px;gap:16px;box-shadow:var(--shadow-lg);}
+            .nav-links.active{display:flex;}
+            .hamburger{display:flex;}
+            .case-vertical-stack{max-width:100%;}
+        }
+        @media(max-width:480px){
+            .hero h1{font-size:1.5rem;}
+            .section-title{font-size:1.4rem;}
+            .results-grid{grid-template-columns:1fr;}
+            .process-steps{grid-template-columns:1fr;}
+            .btn-gold{padding:15px 32px;font-size:1rem;}
+        }
+    </style>
+</head>
+<body>
+
+<!-- ════════════ Navbar ════════════ -->
+<nav class="navbar" id="navbar">
+    <div class="nav-inner">
+        <a href="#" class="logo">
+            <img src="https://i.ibb.co/FbjFQZLm/image.png" alt="리본마케팅 로고">
+            리본마케팅
+        </a>
+        <div class="nav-links" id="navLinks">
+            <a href="#about">소개</a>
+            <a href="#services">서비스</a>
+            <a href="#cases">성과 사례</a>
+            <a href="#process">진행 과정</a>
+            <a href="#faq">FAQ</a>
+            <a href="https://open.kakao.com/o/sikzYWai" target="_blank" class="nav-cta">무료 상담 신청</a>
+        </div>
+        <button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('active')">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ════════════ Hero ════════════ -->
+<section class="hero" id="hero">
+    <div class="hero-inner">
+        <div class="hero-content">
+            <div class="hero-badge"><span class="dot"></span>소상공인 · 전문직 전문 마케팅</div>
+            <h1>검색되지 않으면<br><span class="highlight">존재하지 않는 것</span>과<br>같습니다</h1>
+            <p class="hero-desc">블로그 · 플레이스 · 홍보단까지.<br>고단가 · 고관여 업종의 매출을 올리는<br>리본마케팅의 검증된 마케팅 솔루션을 만나보세요.</p>
+            <div class="hero-buttons">
+                <a href="https://open.kakao.com/o/sikzYWai" target="_blank" class="btn-primary">무료 상담 신청하기 →</a>
+                <a href="#services" class="btn-secondary">서비스 알아보기</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-card-stack">
+                <div class="hero-card">
+                    <div class="hero-card-label">📊 실시간 마케팅 성과</div>
+                    <div class="stat-grid">
+                        <div class="stat-item"><div class="stat-number">80%</div><div class="stat-desc">상위 노출률</div></div>
+                        <div class="stat-item"><div class="stat-number accent">2배</div><div class="stat-desc">문의 증가율</div></div>
+                        <div class="stat-item"><div class="stat-number">4분+</div><div class="stat-desc">평균 체류시간</div></div>
+                        <div class="stat-item"><div class="stat-number accent">100h</div><div class="stat-desc">브랜딩 설계</div></div>
+                    </div>
+                </div>
+                <div class="floating-badge top-right"><div class="floating-icon blue">📈</div><span>월 상담 문의 100% 증가</span></div>
+                <div class="floating-badge bottom-left"><div class="floating-icon green">✓</div><span>핵심 키워드 TOP5 노출</span></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ About ════════════ -->
+<section class="about-section" id="about">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label">About</div>
+            <h2 class="section-title">리본마케팅을 소개합니다</h2>
+        </div>
+        <div class="about-grid">
+            <div class="about-logo-area reveal">
+                <img src="https://i.ibb.co/FbjFQZLm/image.png" alt="리본마케팅 로고">
+            </div>
+            <div class="about-text reveal">
+                <h3>소상공인·전문직 대표님만을 위한<br>마케팅 파트너</h3>
+                <p>리본마케팅은 세무사, 변호사, 청소, 인테리어, 학원 등 고단가·고관여 업종에 특화된 마케팅 에이전시입니다. 단순히 글을 대신 써주는 것이 아니라, 브랜딩 설계부터 디자인, 키워드 분석, 상위 노출, 성과 리포트까지 원스톱으로 관리합니다.</p>
+                <p>80%의 콘텐츠가 상위 노출에 성공하며, 고객사 평균 체류시간은 업계 평균의 1.5배입니다.</p>
+                <div class="about-stats">
+                    <div class="about-stat"><div class="num">80%+</div><div class="label">상위노출률</div></div>
+                    <div class="about-stat"><div class="num">4분+</div><div class="label">평균 체류시간</div></div>
+                    <div class="about-stat"><div class="num">100h+</div><div class="label">브랜딩 설계</div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ Pain Points ════════════ -->
+<section class="pain-section" id="pain">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label">Problem</div>
+            <h2 class="section-title">이런 고민, 혹시 하고 계신가요?</h2>
+            <p class="section-subtitle mx-auto">많은 대표님들이 마케팅에 돈을 쓰고도 효과를 못 느끼고 계십니다.</p>
+        </div>
+        <div class="pain-grid">
+            <div class="pain-card reveal"><div class="pain-icon">😰</div><h3>노출이 안 되는 블로그</h3><p>아무도 검색하지 않는 키워드로 글을 쓰거나, 경쟁이 너무 심한 키워드만 공략해서 노출 자체가 안 되는 경우</p></div>
+            <div class="pain-card reveal"><div class="pain-icon">💸</div><h3>돈만 나가는 대행</h3><p>매달 대행사에 맡기는데 문의가 하나도 없는 상황. 전문성 없이 무분별하게 올린 글은 신뢰도를 오히려 떨어뜨립니다.</p></div>
+            <div class="pain-card reveal"><div class="pain-icon">🤷</div><h3>뭘 해야 할지 모르겠다</h3><p>인스타, 유튜브, 블로그... 채널은 많은데 우리 업종에 뭐가 맞는지, 어디부터 시작해야 하는지 감이 안 잡히는 상황</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ Services ════════════ -->
+<section class="services-section" id="services">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label">Services</div>
+            <h2 class="section-title">리본마케팅이 도와드리는 것</h2>
+            <p class="section-subtitle mx-auto">세 가지 핵심 서비스로 매출과 직결되는 마케팅을 설계합니다.</p>
+        </div>
+        <div class="service-cards">
+            <div class="service-card reveal"><div class="service-card-body"><span class="service-badge">BLOG</span><h3>브랜드 블로그</h3><p>전문직·서비스업 대표님의 전문성을 블로그로 브랜딩합니다. 80% 상위 노출, 평균 체류시간 4분 이상.</p><ul class="service-list"><li>블로그 기본 세팅 & 브랜딩 디자인</li><li>키워드 분석 & 정기 콘텐츠 발행</li><li>핵심 키워드 TOP5 노출 작업</li><li>월간 성과 리포트 제공</li></ul></div></div>
+            <div class="service-card reveal"><div class="service-card-body"><span class="service-badge">PLACE</span><h3>스마트 플레이스</h3><p>음식점, 병원, 학원 등 지역 업종의 네이버 플레이스를 최적화합니다.</p><ul class="service-list"><li>플레이스 SEO 최적화</li><li>썸네일 클릭률 개선</li><li>네이버 예약/쿠폰 활성화</li><li>리뷰어 확보 & 관리</li></ul></div></div>
+            <div class="service-card reveal"><div class="service-card-body"><span class="service-badge">PROMOTION</span><h3>체험단·기자단</h3><p>브랜드 인지도를 높이고 자연스러운 리뷰를 확보합니다.</p><ul class="service-list"><li>키워드 분석 & 타겟 설정</li><li>체험단/기자단 모집 & 운영</li><li>리뷰 수집 & 품질 관리</li><li>1:1 맞춤 가이드 제공</li></ul></div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ Case Study ════════════ -->
+<section class="case-section" id="cases">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label">Case Study</div>
+            <h2 class="section-title">실제 성과를 직접 확인하세요</h2>
+            <p class="section-subtitle mx-auto">리본마케팅과 함께한 고객사의 실제 결과물입니다.</p>
+        </div>
+    </div>
+
+    <!-- 사례 1: 블로그 대행 (이미지 3번 → 여기, 이미지 2번) -->
+    <div class="case-group reveal">
+        <div class="case-group-header">
+            <span class="case-group-tag">블로그 대행</span>
+            <h3 class="case-group-title">낮은 등급의 블로그로도 높은 키워드에서 상위 노출</h3>
+            <p class="case-group-desc">블로그 지수가 낮아도 키워드 전략과 콘텐츠 품질로 상위 노출을 만들어낸 실제 사례입니다.</p>
+        </div>
+        <div class="case-stack">
+            <div class="case-img-wrap">
+                <img src="https://i.ibb.co/3y7jChjj/3.png" alt="블로그 대행 성과 사례 1">
+                <div class="case-img-caption">낮은 등급의 블로그임에도 불구하고 경쟁이 높은 키워드에서 상위 노출에 성공한 결과 화면</div>
+            </div>
+            <div class="case-img-wrap">
+                <img src="https://i.ibb.co/wZbn6yvz/2.png" alt="블로그 대행 성과 사례 2">
+                <div class="case-img-caption">키워드 전략 + 콘텐츠 품질 최적화를 통해 블로그 지수와 관계없이 안정적 상위 노출 유지</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 사례 2: 플레이스 세팅 → 순위 상승 (이미지 1번 → 여기) -->
+    <div class="case-group reveal">
+        <div class="case-group-header">
+            <span class="case-group-tag">플레이스 최적화</span>
+            <h3 class="case-group-title">플레이스 세팅부터 순위 상승까지</h3>
+            <p class="case-group-desc">기본 세팅이 안 되어있던 플레이스를 최적화하고, 지역 핵심 키워드 상위권까지 끌어올린 사례입니다.</p>
+        </div>
+        <div class="case-stack">
+            <div class="case-img-wrap">
+                <img src="https://i.ibb.co/ycpKJBpq/1.png" alt="플레이스 세팅 성과 사례">
+                <div class="case-img-caption">플레이스 기본 세팅 최적화 → 키워드 순위 상승 → 신규 유입 및 문의 증가까지 달성한 실제 결과</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 사례 3: 발레학원 (첫 이미지 삭제, 세로 2장만 크게) -->
+    <div class="case-group reveal">
+        <div class="case-group-header">
+            <span class="case-group-tag">플레이스 상위노출</span>
+            <h3 class="case-group-title">발레학원 – 지역 키워드 상위 노출 달성</h3>
+            <p class="case-group-desc">경쟁이 치열한 지역 키워드에서 플레이스 상위권을 달성하고, 월 문의 건수를 대폭 늘린 사례입니다.</p>
+        </div>
+        <div class="case-vertical-stack">
+            <div class="case-img-wrap">
+                <img src="https://i.ibb.co/ymvDXP8Y/2.png" alt="발레학원 플레이스 상위노출">
+                <div class="case-img-caption">플레이스 상위노출 및 유지관리</div>
+            </div>
+            <div class="case-img-wrap">
+                <img src="https://i.ibb.co/nsVCLKcG/3.png" alt="발레학원 성과보고">
+                <div class="case-img-caption">광고주께 성과보고 및 추가 계약</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ Industries ════════════ -->
+<section class="industries-section" id="industries">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label">Industries</div>
+            <h2 class="section-title">이런 업종에 특화되어 있습니다</h2>
+        </div>
+        <div class="industry-tags reveal">
+            <span class="industry-tag">🏥 병원·의원</span>
+            <span class="industry-tag">⚖️ 법률사무소</span>
+            <span class="industry-tag">📊 세무·회계</span>
+            <span class="industry-tag">🎓 학원·교육</span>
+            <span class="industry-tag">🏠 인테리어</span>
+            <span class="industry-tag">🧹 청소·현장 기술직</span>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ Results ════════════ -->
+<section class="results-section" id="results">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label" style="color:var(--gold-light);">Results</div>
+            <h2 class="section-title" style="color:#fff;">숫자가 증명하는 성과</h2>
+        </div>
+        <div class="results-grid reveal">
+            <div class="result-card"><div class="result-number" data-target="80">0%</div><div class="result-label">콘텐츠 상위 노출률</div></div>
+            <div class="result-card"><div class="result-number" data-target="100">0%</div><div class="result-label">평균 문의 증가율</div></div>
+            <div class="result-card"><div class="result-number" data-target="4">0분+</div><div class="result-label">평균 체류시간</div></div>
+            <div class="result-card"><div class="result-number" data-target="100">0h+</div><div class="result-label">브랜딩 설계 시간</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ Process ════════════ -->
+<section class="process-section" id="process">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label">Process</div>
+            <h2 class="section-title">진행 과정</h2>
+            <p class="section-subtitle mx-auto">체계적인 5단계 프로세스로 확실한 결과를 만듭니다.</p>
+        </div>
+        <div class="process-steps reveal">
+            <div class="process-step"><div class="step-num">STEP 01</div><div class="step-icon">📞</div><h4>무료 상담</h4><p>업종·현황 파악 후 맞춤 전략 제안</p></div>
+            <div class="process-step"><div class="step-num">STEP 02</div><div class="step-icon">🔍</div><h4>키워드 분석</h4><p>경쟁 분석 & 핵심 키워드 도출</p></div>
+            <div class="process-step"><div class="step-num">STEP 03</div><div class="step-icon">🎨</div><h4>브랜딩 설계</h4><p>100시간+ 투자하여 블로그/플레이스 세팅</p></div>
+            <div class="process-step"><div class="step-num">STEP 04</div><div class="step-icon">🚀</div><h4>콘텐츠 운영</h4><p>정기 발행 & 상위 노출 작업</p></div>
+            <div class="process-step"><div class="step-num">STEP 05</div><div class="step-icon">📊</div><h4>성과 리포트</h4><p>월간 리포트 & 전략 개선</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ Philosophy ════════════ -->
+<section class="philosophy-section">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label">Philosophy</div>
+            <h2 class="section-title">리본마케팅이 일하는 방식</h2>
+        </div>
+        <div class="philosophy-card reveal">
+            <p>"마케팅은 단순히 노출을 늘리는 것이 아닙니다. 고객이 검색하고, 클릭하고, 신뢰하고, 문의까지 이어지는 전체 흐름을 설계하는 것입니다. 리본마케팅은 대표님의 전문성을 온라인에서 제대로 보여드리는 일을 합니다."</p>
+            <div class="author">— 리본마케팅 팀</div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ FAQ ════════════ -->
+<section class="faq-section" id="faq">
+    <div class="section-inner">
+        <div class="text-center reveal">
+            <div class="section-label">FAQ</div>
+            <h2 class="section-title">자주 묻는 질문</h2>
+        </div>
+        <div class="faq-list reveal">
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">계약 기간은 어떻게 되나요?<span class="faq-arrow">▼</span></div><div class="faq-a">기본 계약 기간은 3개월이며, 이후 월 단위로 연장 가능합니다. 마케팅 특성상 최소 3개월은 운영해야 안정적인 성과를 확인하실 수 있습니다.</div></div>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">비용은 얼마인가요?<span class="faq-arrow">▼</span></div><div class="faq-a">업종, 키워드 경쟁도, 서비스 범위에 따라 달라집니다. 상담을 통해 현황을 파악한 뒤 맞춤 견적을 안내드리며 절대 불필요한 마케팅은 권하지 않습니다.</div></div>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">어떤 업종이든 가능한가요?<span class="faq-arrow">▼</span></div><div class="faq-a">고단가·고관여 업종(병원, 법률, 청소, 인테리어, 학원)에 특화되어 있습니다. 상담 시 업종 적합성을 함께 판단해드립니다.</div></div>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">성과가 없으면 어떻게 되나요?<span class="faq-arrow">▼</span></div><div class="faq-a">월간 성과 리포트를 통해 투명하게 결과를 공유하며, 목표 미달 시 전략을 즉시 수정합니다. 80%의 콘텐츠가 상위 노출에 성공하고 있으며 상위노출이 어려운 키워드는 미리 안내드립니다.</div></div>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')">블로그가 없어도 시작할 수 있나요?<span class="faq-arrow">▼</span></div><div class="faq-a">네, 블로그 개설부터 브랜딩 디자인, 콘텐츠 발행까지 모두 저희가 진행합니다. 대표님은 상담만 해주시면 됩니다.</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════ CTA ════════════ -->
+<section class="cta-section">
+    <a href="https://open.kakao.com/o/sikzYWai" target="_blank" class="btn-gold">카카오톡 무료 상담하기 →</a>
+    </div>
+</section>
+
+<!-- ════════════ Footer ════════════ -->
+<footer class="footer">
+    <div class="footer-logo">
+        <img src="https://i.ibb.co/FbjFQZLm/image.png" alt="리본마케팅">
+        <span>리본마케팅</span>
+    </div>
+    <div class="footer-links">
+        <a href="https://blog.naver.com/logos_mkt" target="_blank">블로그</a>
+        <a href="https://www.instagram.com/re.born_mkt/" target="_blank">인스타그램</a>
+        <a href="https://open.kakao.com/o/sikzYWai" target="_blank">카카오톡 상담</a>
+    </div>
+    <p>© 2026 리본마케팅. All rights reserved.</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>30);});
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+let counted=false;
+const cObs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting&&!counted){counted=true;document.querySelectorAll('.result-number[data-target]').forEach(n=>{const t=+n.dataset.target,s=n.textContent.replace(/[0-9]/g,'');let c=0;const st=Math.ceil(t/40),ti=setInterval(()=>{c+=st;if(c>=t){c=t;clearInterval(ti);}n.textContent=c+s;},30);});}});},{threshold:.3});
+const rs=document.querySelector('.results-section');if(rs)cObs.observe(rs);
+</script>
+</body>
+</html>
