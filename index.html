@@ -94,7 +94,7 @@ button{cursor:pointer;border:none;background:none;font-family:inherit;}
 
 .hscroll-section{overflow:hidden;background:var(--dark);padding:120px 0 80px;}
 .hscroll-header{max-width:1200px;margin:0 auto 60px;padding:0 48px;}
-.hscroll-track{display:flex;gap:28px;padding:0 48px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;} .hscroll-track::-webkit-scrollbar{display:none;} .hscroll-track .hscroll-card{scroll-snap-align:start;}
+.hscroll-track{display:flex;gap:28px;padding:0 48px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--gold) rgba(255,255,255,.1);} .hscroll-track::-webkit-scrollbar{height:6px;} .hscroll-track::-webkit-scrollbar-track{background:rgba(255,255,255,.1);border-radius:3px;} .hscroll-track::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;} .hscroll-track .hscroll-card{scroll-snap-align:start;}
 .hscroll-card{flex-shrink:0;width:420px;border-radius:16px;overflow:hidden;position:relative;cursor:pointer;transition:transform .5s cubic-bezier(.19,1,.22,1);}
 .hscroll-card:hover{transform:scale(1.03);}
 .hscroll-card img{width:100%;aspect-ratio:3/4;object-fit:cover;}
