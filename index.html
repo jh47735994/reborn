@@ -8,8 +8,12 @@
 <meta property="og:title" content="리본마케팅 | 당신의 비즈니스를 다시 태어나게 합니다.">
 <meta property="og:description" content="소상공인·전문직 전문 통합 마케팅. 블로그, 플레이스, 인스타그램까지.">
 <meta property="og:image" content="https://i.ibb.co/vNSMHNm/A-cinematic-wide-angle-202604182224.jpg">
-<meta property="og:type" content="website">  
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://reborn-marketing.pages.dev/">
+<meta name="robots" content="index, follow">
 <link rel="icon" href="https://i.ibb.co/FbjFQZLm/image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
@@ -31,228 +35,181 @@ a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 button{cursor:pointer;border:none;background:none;font-family:inherit;}
 
-#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--gold));width:0%;z-index:9999;}
+#progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--primary),var(--gold));width:0%;z-index:99999;pointer-events:none;}
 
-.nav{position:fixed;top:0;left:0;width:100%;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;z-index:10000;}
-.nav.scrolled{mix-blend-mode:normal;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);box-shadow:0 2px 20px rgba(0,0,0,.04);padding:14px 48px;}
+.nav{position:fixed;top:0;left:0;width:100%;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;z-index:10000;transition:background .4s,padding .3s;}
+.nav.scrolled{background:rgba(255,255,255,.95);backdrop-filter:blur(20px);box-shadow:0 2px 20px rgba(0,0,0,.04);padding:14px 48px;}
 .nav-logo{height:32px;transition:.3s;}
 .nav.scrolled .nav-logo{filter:none;}
 .nav-right{display:flex;align-items:center;gap:32px;}
 .nav-right a{font-size:13px;font-weight:500;color:#fff;letter-spacing:.02em;transition:.3s;}
 .nav.scrolled .nav-right a{color:var(--text);}
 .nav-right a:hover{color:var(--gold);}
-.nav-cta-btn{background:var(--gold);color:var(--dark)!important;padding:10px 24px;border-radius:50px;font-weight:700;font-size:12px;mix-blend-mode:normal;transition:transform .3s,box-shadow .3s;}
+.nav-cta-btn{background:var(--gold);color:var(--dark)!important;padding:10px 24px;border-radius:50px;font-weight:700;font-size:12px;transition:transform .3s,box-shadow .3s;}
 .nav-cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,164,90,.4);}
 .mob-toggle{display:none;cursor:pointer;}
 .mob-toggle span{display:block;width:22px;height:1.5px;background:#fff;margin:5px 0;transition:.3s;}
 .nav.scrolled .mob-toggle span{background:var(--dark);}
 
-.hero{height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--primary-dark);}
-.hero-bg{position:absolute;inset:0;background:url('https://i.ibb.co/vNSMHNm/A-cinematic-wide-angle-202604182224.jpg') center/cover;opacity:.35;will-change:transform;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,61,42,.55) 0%,rgba(10,10,10,.4) 100%);}
-.hero-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 32px;}
-.hero-label{font-size:13px;font-weight:700;color:var(--gold);letter-spacing:4px;margin-bottom:24px;opacity:0;}
-.hero-title{font-size:clamp(2.2rem,5vw,3.8rem);font-weight:900;color:#fff;line-height:1.15;letter-spacing:-.04em;margin-bottom:24px;}
+.hero{height:70vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--primary-dark);}
+.hero-bg{position:absolute;inset:0;background:url('https://i.ibb.co/vNSMHNm/A-cinematic-wide-angle-202604182224.jpg') center/cover;opacity:.25;will-change:transform;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,61,42,.7) 0%,rgba(10,10,10,.5) 100%);}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;padding:0 32px;}
+.hero-label{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:4px;margin-bottom:20px;opacity:0;}
+.hero-title{font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:900;color:#fff;line-height:1.2;letter-spacing:-.04em;margin-bottom:20px;}
 .hero-title .line{display:block;overflow:hidden;}
 .hero-title .line span{display:inline-block;transform:translateY(110%);}
-.hero-sub{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,.7);font-weight:300;margin-bottom:48px;opacity:0;}
+.hero-sub{font-size:clamp(.9rem,1.8vw,1.1rem);color:rgba(255,255,255,.7);font-weight:300;margin-bottom:36px;opacity:0;}
 .hero-sub strong{color:var(--gold);font-weight:700;}
-.hero-cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;opacity:0;}
-.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--dark);padding:18px 44px;border-radius:60px;font-size:16px;font-weight:700;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .3s;}
+.hero-cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;opacity:0;}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--dark);padding:16px 38px;border-radius:60px;font-size:15px;font-weight:700;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .3s;}
 .btn-gold:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(200,164,90,.4);}
-.btn-green{display:inline-flex;align-items:center;gap:10px;background:var(--primary);color:#fff;padding:18px 44px;border-radius:60px;font-size:16px;font-weight:700;transition:transform .4s cubic-bezier(.19,1,.22,1),box-shadow .3s;border:1.5px solid rgba(255,255,255,.15);}
-.btn-green:hover{transform:scale(1.05);box-shadow:0 12px 40px rgba(45,90,61,.3);border-color:var(--primary-light);}
-.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);font-size:12px;letter-spacing:2px;display:flex;flex-direction:column;align-items:center;gap:8px;}
-.hero-scroll .line-scroll{width:1px;height:40px;background:rgba(255,255,255,.2);position:relative;overflow:hidden;}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);font-size:11px;letter-spacing:2px;display:flex;flex-direction:column;align-items:center;gap:8px;}
+.hero-scroll .line-scroll{width:1px;height:32px;background:rgba(255,255,255,.2);position:relative;overflow:hidden;}
 .hero-scroll .line-scroll::after{content:'';position:absolute;top:-100%;left:0;width:100%;height:100%;background:var(--gold);animation:scrollLine 1.8s infinite;}
 @keyframes scrollLine{0%{top:-100%;}100%{top:100%;}}
 
-.sec{padding:160px 48px;position:relative;}
+.marquee-wrap{overflow:hidden;padding:28px 0;background:var(--primary);border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);}
+.marquee{display:flex;gap:60px;white-space:nowrap;will-change:transform;}
+.marquee span{font-size:clamp(1rem,2vw,1.6rem);font-weight:900;color:rgba(255,255,255,.15);letter-spacing:-.02em;}
+.marquee span em{color:var(--gold);font-style:normal;opacity:.4;}
+
+.sec{padding:140px 48px;position:relative;}
 .sec-inner{max-width:1200px;margin:0 auto;}
 .sec-label{font-size:12px;font-weight:700;color:var(--primary);letter-spacing:4px;text-transform:uppercase;margin-bottom:16px;}
-.sec-title{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.2;letter-spacing:-.04em;margin-bottom:20px;}
-.sec-desc{font-size:1.05rem;color:var(--text-sub);line-height:1.85;max-width:560px;}
+.sec-title{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.2;letter-spacing:-.04em;margin-bottom:20px;}
+.sec-desc{font-size:1rem;color:var(--text-sub);line-height:1.85;max-width:560px;}
 .sec-dark{background:var(--dark);color:#fff;}
 .sec-dark .sec-label{color:var(--gold);}
 .sec-dark .sec-desc{color:rgba(255,255,255,.6);}
 .sec-green{background:var(--primary-dark);color:#fff;}
 .sec-green .sec-label{color:var(--gold);}
-.sec-green .sec-desc{color:rgba(255,255,255,.7);}
 .center{text-align:center;}
 
-.marquee-wrap{overflow:hidden;padding:36px 0;background:var(--primary);border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1);}
-.marquee{display:flex;gap:60px;white-space:nowrap;will-change:transform;}
-.marquee span{font-size:clamp(1.2rem,2.5vw,2rem);font-weight:900;color:rgba(255,255,255,.15);letter-spacing:-.02em;}
-.marquee span em{color:var(--gold);font-style:normal;opacity:.4;}
-
-.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;min-height:70vh;}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .split-img{position:relative;overflow:hidden;border-radius:20px;}
 .split-img img{width:100%;aspect-ratio:4/5;object-fit:cover;will-change:transform;}
 .split-img .img-overlay{position:absolute;inset:0;background:var(--primary);transform-origin:left;z-index:2;}
 
 .stats-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:0;background:var(--primary-dark);border-top:1px solid rgba(255,255,255,.08);}
-.stat-item{padding:60px 40px;border-right:1px solid rgba(255,255,255,.08);text-align:center;}
+.stat-item{padding:52px 40px;border-right:1px solid rgba(255,255,255,.08);text-align:center;}
 .stat-item:last-child{border-right:none;}
-.stat-num{font-size:clamp(2.5rem,5vw,4rem);font-weight:900;color:var(--gold);line-height:1;}
-.stat-label{font-size:.85rem;color:rgba(255,255,255,.45);margin-top:12px;}
+.stat-num{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:900;color:var(--gold);line-height:1;}
+.stat-label{font-size:.82rem;color:rgba(255,255,255,.45);margin-top:10px;}
 
-.hscroll-section{overflow:hidden;background:var(--dark);padding:120px 0 80px;}
-.hscroll-header{max-width:1200px;margin:0 auto 60px;padding:0 48px;}
-.hscroll-track{display:flex;gap:28px;padding:0 48px;overflow-x:auto;scroll-snap-type:x proximity;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:thin;scrollbar-color:var(--gold) rgba(255,255,255,.1);} .hscroll-track::-webkit-scrollbar{height:6px;} .hscroll-track::-webkit-scrollbar-track{background:rgba(255,255,255,.1);border-radius:3px;} .hscroll-track::-webkit-scrollbar-thumb{background:var(--gold);border-radius:3px;} .hscroll-track .hscroll-card{scroll-snap-align:start;}
-.hscroll-card{flex-shrink:0;width:420px;border-radius:16px;overflow:hidden;position:relative;cursor:pointer;transition:transform .5s cubic-bezier(.19,1,.22,1);}
-.hscroll-card:hover{transform:scale(1.03);}
-.hscroll-card img{width:100%;aspect-ratio:3/4;object-fit:cover;}
-.hscroll-card .card-label{position:absolute;bottom:0;left:0;right:0;padding:28px;background:linear-gradient(transparent,rgba(0,0,0,.7));color:#fff;font-size:.9rem;font-weight:500;}
+.cases-section{background:var(--dark);padding:120px 48px;}
+.cases-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:1200px;margin:48px auto 0;}
+.cases-grid .case-card{border-radius:16px;overflow:hidden;cursor:pointer;transition:transform .4s cubic-bezier(.19,1,.22,1);}
+.cases-grid .case-card:hover{transform:scale(1.02);}
+.cases-grid .case-card img{width:100%;aspect-ratio:3/4;object-fit:cover;}
+.cases-grid .case-card:nth-child(5){grid-column:1/-1;}
+.cases-grid .case-card:nth-child(5) img{aspect-ratio:16/9;}
 
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:60px;}
-.svc-card{background:var(--white);padding:56px 40px;position:relative;overflow:hidden;transition:background .4s,color .4s;}
+.svc-card{background:var(--white);padding:52px 36px;position:relative;overflow:hidden;transition:background .4s,color .4s;}
 .svc-card:hover{background:var(--primary);}
 .svc-card:hover *{color:#fff!important;}
-.svc-card .svc-num{font-size:5rem;font-weight:900;color:rgba(45,90,61,.06);position:absolute;top:16px;right:24px;line-height:1;transition:color .4s;}
+.svc-card .svc-num{font-size:4.5rem;font-weight:900;color:rgba(45,90,61,.06);position:absolute;top:12px;right:20px;line-height:1;transition:color .4s;}
 .svc-card:hover .svc-num{color:rgba(255,255,255,.08);}
-.svc-card h3{font-size:1.4rem;font-weight:700;margin-bottom:16px;position:relative;transition:color .4s;}
-.svc-card p{font-size:.92rem;color:var(--text-sub);line-height:1.8;position:relative;transition:color .4s;}
+.svc-card h3{font-size:1.3rem;font-weight:700;margin-bottom:14px;position:relative;transition:color .4s;}
+.svc-card p{font-size:.9rem;color:var(--text-sub);line-height:1.8;position:relative;transition:color .4s;}
 
-.col-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:60px;}
-.col-card{background:var(--white);border-radius:16px;overflow:hidden;border:1px solid #eee;transition:transform .5s cubic-bezier(.19,1,.22,1),box-shadow .3s;cursor:pointer;display:block;}
-.col-card:hover{transform:translateY(-10px);box-shadow:0 20px 60px rgba(0,0,0,.08);}
-.col-card .col-thumb{height:200px;background:var(--primary);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.col-card:nth-child(2) .col-thumb{background:var(--primary-dark);}
-.col-card:nth-child(3) .col-thumb{background:#3a7a52;}
-.col-card:nth-child(4) .col-thumb{background:var(--gold-dark);}
-.col-card:nth-child(5) .col-thumb{background:#4a6e5a;}
-.col-card:nth-child(6) .col-thumb{background:var(--dark);}
-.col-card .col-thumb .col-num{font-size:5rem;font-weight:900;color:rgba(255,255,255,.1);position:absolute;right:20px;bottom:-8px;line-height:1;}
-.col-card .col-thumb .col-icon{font-size:2.4rem;position:relative;z-index:1;}
-.col-card .col-body{padding:28px 24px;}
-.col-card .col-tag{font-size:11px;font-weight:700;color:var(--primary);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;display:block;}
-.col-card h3{font-size:1.05rem;font-weight:700;line-height:1.45;margin-bottom:8px;}
-.col-card p{font-size:.85rem;color:var(--text-sub);line-height:1.7;}
-.col-card .read-more{display:inline-flex;align-items:center;gap:6px;font-size:.82rem;font-weight:700;color:var(--primary);margin-top:14px;transition:.3s;}
-.col-card:hover .read-more{gap:10px;color:var(--gold);}
-
-.ebook-banner{background:linear-gradient(135deg,var(--primary),var(--primary-dark));padding:80px 48px;position:relative;overflow:hidden;}
-.ebook-banner::before{content:'';position:absolute;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(200,164,90,.12),transparent 70%);top:-150px;right:-100px;}
-.ebook-banner-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:60px;align-items:center;position:relative;z-index:2;}
-.ebook-banner h2{font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:#fff;margin-bottom:12px;line-height:1.3;}
-.ebook-banner p{color:rgba(255,255,255,.7);font-size:1rem;margin-bottom:24px;}
-.ebook-banner .btn-gold{white-space:nowrap;}
-.ebook-mini-stack{display:flex;gap:-10px;}
-.ebook-mini{width:80px;height:110px;background:var(--white);border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.2);display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:900;color:rgba(45,90,61,.15);transition:transform .3s;}
-.ebook-mini:nth-child(1){transform:rotate(-6deg);z-index:1;}
-.ebook-mini:nth-child(2){transform:rotate(0deg) translateX(-10px);z-index:3;}
-.ebook-mini:nth-child(3){transform:rotate(6deg) translateX(-20px);z-index:2;}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px;}
+.cmp-card{border-radius:20px;padding:44px 36px;position:relative;}
+.cmp-card.fail{background:#1a1210;border:1px solid rgba(192,57,43,.2);}
+.cmp-card.win{background:#0f1a13;border:1px solid rgba(45,90,61,.3);}
+.cmp-card .tag{display:inline-block;padding:6px 16px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:18px;letter-spacing:1px;}
+.cmp-card.fail .tag{background:var(--red);color:#fff;}
+.cmp-card.win .tag{background:var(--primary);color:#fff;}
+.cmp-card h3{font-size:1.2rem;font-weight:700;margin-bottom:14px;color:#fff;}
+.cmp-card p{font-size:.9rem;line-height:1.85;color:rgba(255,255,255,.55);}
 
 .ind-tags{display:flex;flex-wrap:wrap;gap:14px;margin-top:40px;justify-content:center;}
-.ind-tag{padding:14px 32px;border-radius:60px;border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:.9rem;font-weight:500;transition:.4s cubic-bezier(.19,1,.22,1);cursor:default;}
+.ind-tag{padding:14px 32px;border-radius:60px;border:1.5px solid rgba(255,255,255,.15);color:rgba(255,255,255,.7);font-size:.9rem;font-weight:500;transition:.4s;cursor:default;}
 .ind-tag:hover{background:var(--gold);color:var(--dark);border-color:var(--gold);transform:translateY(-4px) scale(1.04);}
 
 .philo-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:60px;}
-.philo-card{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:44px 36px;transition:.4s;background:rgba(255,255,255,.02);}
+.philo-card{border:1px solid rgba(255,255,255,.1);border-radius:16px;padding:40px 32px;transition:.4s;background:rgba(255,255,255,.02);}
 .philo-card:hover{border-color:var(--gold);background:rgba(200,164,90,.05);}
-.philo-card h3{font-size:1.2rem;font-weight:700;color:var(--gold);margin-bottom:14px;}
-.philo-card p{font-size:.92rem;color:rgba(255,255,255,.6);line-height:1.85;}
-
-.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:60px;}
-.cmp-card{border-radius:20px;padding:48px 40px;position:relative;}
-.cmp-card.fail{background:#1a1210;border:1px solid rgba(192,57,43,.2);}
-.cmp-card.win{background:#0f1a13;border:1px solid rgba(45,90,61,.3);}
-.cmp-card .tag{display:inline-block;padding:6px 16px;border-radius:50px;font-size:11px;font-weight:700;margin-bottom:20px;letter-spacing:1px;}
-.cmp-card.fail .tag{background:var(--red);color:#fff;}
-.cmp-card.win .tag{background:var(--primary);color:#fff;}
-.cmp-card h3{font-size:1.3rem;font-weight:700;margin-bottom:16px;color:#fff;}
-.cmp-card p{font-size:.92rem;line-height:1.85;color:rgba(255,255,255,.55);}
+.philo-card h3{font-size:1.1rem;font-weight:700;color:var(--gold);margin-bottom:12px;}
+.philo-card p{font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.85;}
 
 .faq-list{max-width:800px;margin:60px auto 0;}
 .faq-item{border-bottom:1px solid #e8e8e8;}
-.faq-q{padding:24px 0;font-size:1.05rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .3s;}
+.faq-q{padding:22px 0;font-size:1rem;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:color .3s;}
 .faq-q:hover{color:var(--primary);}
-.faq-q .arrow{font-size:1.4rem;transition:transform .3s;color:var(--primary);}
+.faq-q .arrow{font-size:1.4rem;transition:transform .3s;color:var(--primary);flex-shrink:0;margin-left:16px;}
 .faq-q.open .arrow{transform:rotate(180deg);}
 .faq-q.open{color:var(--primary);}
 .faq-a{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.19,1,.22,1);}
-.faq-a-inner{padding:0 0 24px;font-size:.95rem;color:var(--text-sub);line-height:1.85;}
+.faq-a-inner{padding:0 0 22px;font-size:.92rem;color:var(--text-sub);line-height:1.85;}
 
-.final-cta{padding:180px 48px;text-align:center;background:linear-gradient(135deg,var(--primary-dark),var(--dark));position:relative;overflow:hidden;}
-.final-cta::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(200,164,90,.12),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
-.final-cta h2{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#fff;position:relative;margin-bottom:20px;line-height:1.25;}
-.final-cta p{color:rgba(255,255,255,.5);font-size:1.05rem;margin-bottom:44px;position:relative;}
+.final-cta{padding:160px 48px;text-align:center;background:linear-gradient(135deg,var(--primary-dark),var(--dark));position:relative;overflow:hidden;}
+.final-cta::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,164,90,.1),transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);}
+.final-cta h2{font-size:clamp(1.8rem,4vw,3rem);font-weight:900;color:#fff;position:relative;margin-bottom:16px;line-height:1.25;}
+.final-cta p{color:rgba(255,255,255,.5);font-size:1rem;margin-bottom:40px;position:relative;}
 
-footer{background:var(--dark2);padding:60px 48px;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
-footer img{height:26px;margin:0 auto 20px;opacity:.5;}
-footer .f-links{display:flex;gap:28px;justify-content:center;margin-bottom:16px;}
+footer{background:var(--dark2);padding:52px 48px;text-align:center;border-top:1px solid rgba(255,255,255,.06);}
+footer img{height:24px;margin:0 auto 16px;opacity:.5;}
+footer .f-links{display:flex;gap:28px;justify-content:center;margin-bottom:14px;}
 footer .f-links a{font-size:.8rem;color:rgba(255,255,255,.35);transition:.3s;}
 footer .f-links a:hover{color:var(--gold);}
 footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
 
-.float-kakao{position:fixed;bottom:28px;right:28px;width:58px;height:58px;background:#FEE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:0 4px 24px rgba(0,0,0,.2);z-index:999;transition:transform .3s;}
+.float-kakao{position:fixed;bottom:28px;right:28px;width:56px;height:56px;background:#FEE500;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 24px rgba(0,0,0,.2);z-index:999;transition:transform .3s;}
 .float-kakao:hover{transform:scale(1.12) translateY(-4px);}
 
-.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:10000;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;backdrop-filter:blur(10px);}
+.lb{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:10002;align-items:center;justify-content:center;padding:20px;cursor:zoom-out;backdrop-filter:blur(10px);}
 .lb.show{display:flex;}
 .lb img{max-width:92%;max-height:90vh;border-radius:10px;object-fit:contain;}
 .lb-close{position:absolute;top:24px;right:32px;color:#fff;font-size:2.2rem;cursor:pointer;transition:.3s;}
 .lb-close:hover{transform:rotate(90deg);}
 
-/* ── Toast Popup ── */
-.toast{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) scale(.8);background:var(--white);border:1px solid #e0e0e0;border-radius:16px;padding:40px 48px;text-align:center;z-index:10001;box-shadow:0 20px 60px rgba(0,0,0,.15);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;}
-.toast.show{opacity:1;transform:translate(-50%,-50%) scale(1);pointer-events:auto;}
-.toast-overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:10000;opacity:0;pointer-events:none;transition:opacity .3s;}
-.toast-overlay.show{opacity:1;pointer-events:auto;}
-.toast h3{font-size:1.2rem;font-weight:700;color:var(--primary);margin-bottom:8px;}
-.toast p{font-size:.95rem;color:var(--text-sub);margin-bottom:24px;}
-.toast button{background:var(--primary);color:#fff;padding:12px 36px;border-radius:50px;font-size:.9rem;font-weight:700;transition:.3s;}
-.toast button:hover{background:var(--primary-light);}
-
 @media(max-width:900px){
-  .nav{padding:16px 24px;mix-blend-mode:normal;background:transparent;z-index:10000;} .nav .nav-logo{filter:none!important;}
-  .nav.scrolled{background:rgba(255,255,255,.95);}
-  .nav-logo{filter:brightness(0) invert(1);}
-  .nav.scrolled .nav-logo{filter:none;}
+  .nav{padding:16px 24px;z-index:10000;}
+  .nav .nav-logo{filter:none!important;}
+  .nav.scrolled{background:rgba(255,255,255,.95);padding:12px 24px;}
   .nav-right{display:none;position:fixed;top:0;left:0;width:100%;height:100vh;background:rgba(10,10,10,.99);flex-direction:column;align-items:center;justify-content:center;gap:32px;z-index:10001;}
   .nav-right.open{display:flex;}
   .nav-right a{font-size:1.3rem;color:#fff!important;font-weight:500;}
   .nav-right .nav-cta-btn{margin-top:12px;font-size:14px;padding:14px 36px;}
-  .mob-toggle{display:block;z-index:9999;position:relative;}
-  .sec{padding:100px 24px;}
-  .split{grid-template-columns:1fr;gap:40px;}
+  .mob-toggle{display:block;z-index:10002;position:relative;}
+  .hero{height:60vh;}
+  .hero-title{font-size:1.7rem;}
+  .sec{padding:80px 24px;}
+  .split{grid-template-columns:1fr;gap:36px;}
   .split.reverse .split-img{order:-1;}
   .stats-strip{grid-template-columns:1fr 1fr;}
-  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:36px 24px;}
-  .svc-grid,.col-grid,.philo-grid,.compare-grid{grid-template-columns:1fr;}
-  .hscroll-card{width:300px;}
-  .ebook-banner-inner{grid-template-columns:1fr;text-align:center;}
-  .ebook-mini-stack{justify-content:center;}
-  .hero-title{font-size:2.0rem;}
+  .stat-item{border-right:none;border-bottom:1px solid rgba(255,255,255,.08);padding:32px 20px;}
+  .svc-grid,.philo-grid,.compare-grid{grid-template-columns:1fr;}
+  .cases-grid{grid-template-columns:1fr;}
+  .cases-grid .case-card:nth-child(5){grid-column:auto;}
+  .cases-grid .case-card:nth-child(5) img{aspect-ratio:3/4;}
   .hero-cta-row{flex-direction:column;align-items:center;gap:12px;}
-  .btn-gold,.btn-green{width:80%;justify-content:center;padding:16px 20px;font-size:15px;}
-  .final-cta{padding:120px 24px;}
-  .final-cta h2{font-size:1.8rem;}
+  .btn-gold{width:80%;justify-content:center;padding:16px 20px;font-size:14px;}
+  .final-cta{padding:100px 24px;}
+  .final-cta h2{font-size:1.6rem;}
+  .ind-tags{gap:10px;}
+  .ind-tag{padding:12px 20px;font-size:.8rem;}
 }
-
 </style>
 </head>
 <body>
 
 <div id="progress"></div>
 
-<!-- ═══ NAV ═══ -->
 <nav class="nav" id="nav">
   <a href="#"><img src="https://i.ibb.co/FbjFQZLm/image.png" alt="리본마케팅" class="nav-logo"></a>
   <div class="nav-right" id="navMenu">
     <a href="#about">소개</a>
     <a href="#services">서비스</a>
     <a href="#cases">성과</a>
-    <a href="#columns">칼럼</a>
     <a href="#faq">FAQ</a>
-    <a href="javascript:void(0)" onclick="showToast()"
->전자책</a>
     <a href="https://open.kakao.com/o/sikzYWai" target="_blank" class="nav-cta-btn">무료 상담 →</a>
   </div>
   <div class="mob-toggle" id="mobToggle"><span></span><span></span><span></span></div>
 </nav>
 
-<!-- ═══ HERO ═══ -->
 <section class="hero">
   <div class="hero-bg" id="heroBg"></div>
   <div class="hero-overlay"></div>
@@ -262,17 +219,14 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
       <span class="line"><span>당신의 비즈니스를</span></span>
       <span class="line"><span>다시 태어나게 합니다.</span></span>
     </h1>
-    <p class="hero-sub">전문직/ 현장 기술직/ 교육/ 인테리어 전문<strong><br><br>통합 광고대행사</strong> 리본 마케팅입니다.</p>
+    <p class="hero-sub">전문직 / 현장 기술직 / 교육 / 인테리어 전문<br><strong>통합 광고대행사</strong> 리본 마케팅입니다.</p>
     <div class="hero-cta-row">
-      <a href="https://open.kakao.com/o/sikzYWai" target="_blank" class="btn-gold">카카오톡 무료 상담 →</a>
-      <a href="javascript:void(0)" onclick="showToast()"
- class="btn-green">무료 전자책 받기 📘</a>
+      <a href="https://open.kakao.com/o/sikzYWai" target="_blank" rel="noopener noreferrer" class="btn-gold">카카오톡 무료 상담 →</a>
     </div>
   </div>
   <div class="hero-scroll"><span>SCROLL</span><div class="line-scroll"></div></div>
 </section>
 
-<!-- ═══ MARQUEE ═══ -->
 <div class="marquee-wrap">
   <div class="marquee" id="marquee">
     <span>검색해도 안 나온다</span><span><em>●</em></span>
@@ -286,30 +240,28 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
   </div>
 </div>
 
-<!-- ═══ ABOUT ═══ -->
 <section class="sec" id="about" style="background:var(--white);">
   <div class="sec-inner split">
     <div class="split-img">
       <div class="img-overlay"></div>
-      <img src="https://i.ibb.co/3Y5w19LH/A-premium-brand-202604182209.jpg" alt="리본마케팅 로고">
+      <img src="https://i.ibb.co/FbjFQZLm/image.png" alt="리본마케팅 로고" style="aspect-ratio:1/1;object-fit:contain;background:#f5f5f3;padding:60px;">
     </div>
     <div>
       <p class="sec-label">ABOUT</p>
-      <h2 class="sec-title">성장을 위해서도,<br> 매출방어를 위해서도<br>마케팅은 필수입니다.</h2>
+      <h2 class="sec-title">성장을 위해서도,<br>매출방어를 위해서도<br>마케팅은 필수입니다.</h2>
       <p class="sec-desc" style="margin-bottom:20px;">대표님의 업체는 온라인에서 얼마나 잘 보여지고 있나요?</p>
-      <p class="sec-desc">블로그, 플레이스, 인스타그램, 홈페이지, 각종 디자인까지<br> — 리본이 책임지고 관리해드립니다.</p>
+      <p class="sec-desc">블로그, 플레이스, 인스타그램, 홈페이지, 각종 디자인까지<br>— 리본이 책임지고 관리해드립니다.</p>
     </div>
   </div>
 </section>
 
-<!-- ═══ PROBLEM ═══ -->
 <section class="sec" style="background:var(--bg);">
   <div class="sec-inner split reverse">
     <div>
       <p class="sec-label">PROBLEM</p>
-      <h2 class="sec-title">광고비만 쓰고<br> 효과는 못보는 마케팅,<br>무엇이 문제일까요?</h2>
+      <h2 class="sec-title">광고비만 쓰고<br>효과는 못보는 마케팅,<br>무엇이 문제일까요?</h2>
       <p class="sec-desc" style="margin-bottom:20px;">상위노출과 신뢰성 있는 컨텐츠,<br>이 두 가지를 다 잡아야 합니다.</p>
-      <p class="sec-desc">무엇이든 쉽게 만들 수 있는 AI시대,<br> 차별성 없는 콘텐츠는 외면받기 쉽상입니다.</p>
+      <p class="sec-desc">무엇이든 쉽게 만들 수 있는 AI시대,<br>차별성 없는 콘텐츠는 외면받기 쉽상입니다.</p>
     </div>
     <div class="split-img">
       <div class="img-overlay"></div>
@@ -318,7 +270,6 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
   </div>
 </section>
 
-<!-- ═══ STATS ═══ -->
 <div class="stats-strip">
   <div class="stat-item"><div class="stat-num" data-count="80">0</div><div class="stat-label">상위 노출률 (%)</div></div>
   <div class="stat-item"><div class="stat-num" data-count="2" data-suffix="배">0</div><div class="stat-label">문의 증가</div></div>
@@ -326,69 +277,46 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
   <div class="stat-item"><div class="stat-num" data-count="100" data-suffix="h+">0</div><div class="stat-label">브랜딩 디자인</div></div>
 </div>
 
-<!-- ═══ PROCESS ═══ -->
-<section class="sec" style="background:var(--white);" id="process">
-  <div class="sec-inner split">
-    <div class="split-img">
-      <div class="img-overlay"></div>
-      <img src="https://i.ibb.co/PsFZ9yyR/A-top-down-flat-202604182215.jpg" alt="3단계 프로세스">
-    </div>
-    <div>
-      <p class="sec-label">PROCESS</p>
-      <h2 class="sec-title">3단계로<br>구분됩니다.</h2>
-      <div style="margin-top:36px;">
-        <p style="margin-bottom:28px;"><strong style="color:var(--primary);font-size:1.1rem;">01 — 무료 상담 & 키워드 분석</strong><br><span style="color:var(--text-sub);font-size:.95rem;">업종, 지역, 경쟁 환경을 분석합니다.</span></p>
-        <p style="margin-bottom:28px;"><strong style="color:var(--primary);font-size:1.1rem;">02 — 브랜딩 디자인 & 세팅</strong><br><span style="color:var(--text-sub);font-size:.95rem;">100시간 이상의 브랜딩 작업과 채널 세팅.</span></p>
-        <p><strong style="color:var(--primary);font-size:1.1rem;">03 — 콘텐츠 운영 & 성과 보고</strong><br><span style="color:var(--text-sub);font-size:.95rem;">정기 발행, 상위 노출 관리, 월간 리포트.</span></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ COMPARE ═══ -->
 <section class="sec sec-dark" id="compare">
   <div class="sec-inner">
     <div class="center" style="margin-bottom:20px;">
-      <p class="sec-label">BEFORE & AFTER</p>
+      <p class="sec-label">BEFORE &amp; AFTER</p>
       <h2 class="sec-title">마케팅을 방치하면?</h2>
     </div>
     <div class="compare-grid">
       <div class="cmp-card fail">
         <span class="tag">WITHOUT</span>
         <h3>싸구려 마케팅 대행사를 만나면</h3>
-        <p>가격은 저렴하나 검색에도 잘 안 나오고,<br><br> 차별성 없는 뻔한 공장식 콘텐츠만 노출됩니다.<br><br> 결국 광고비만 쓰고 문의는 늘지 않는 상태만 반복되죠.</p>
+        <p>가격은 저렴하나 검색에도 잘 안 나오고,<br><br>차별성 없는 뻔한 공장식 콘텐츠만 노출됩니다.<br><br>결국 광고비만 쓰고 문의는 늘지 않는 상태만 반복되죠.</p>
       </div>
       <div class="cmp-card win">
         <span class="tag">WITH REBORN</span>
         <h3>리본마케팅과 함께하면</h3>
-        <p>채널별 알고리즘 최적화로 키워드에서 상위노출 되며,<br><br> 차별화된 컨텐츠(디자인, 글)로 고객을 설득하여<br> 문의로 이어지게 합니다.<br><br> 매달 성장하는 구조를 만듭니다.</p>
+        <p>채널별 알고리즘 최적화로 키워드에서 상위노출 되며,<br><br>차별화된 컨텐츠(디자인, 글)로 고객을 설득하여<br>문의로 이어지게 합니다.<br><br>매달 성장하는 구조를 만듭니다.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══ CASE STUDY (Horizontal Scroll) ═══ -->
-<section class="hscroll-section" id="cases">
-  <div class="hscroll-header">
+<section class="cases-section" id="cases">
+  <div style="max-width:1200px;margin:0 auto;">
     <p class="sec-label" style="color:var(--gold);">CASE STUDY</p>
     <h2 class="sec-title" style="color:#fff;">실제 성과를 확인하세요.</h2>
   </div>
-  <div class="hscroll-track" id="hscrollTrack">
-    <div class="hscroll-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/3y7jChjj/3.png" alt="케이스1"><div class="card-label">준최2로 블로그 상위노출 성공</div></div>
-    <div class="hscroll-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/wZbn6yvz/2.png" alt="케이스2"><div class="card-label">준최2로 블로그 상위노출 성공</div></div>
-    <div class="hscroll-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/ycpKJBpq/1.png" alt="케이스3"><div class="card-label">플레이스 세팅 및 최적화로 상위노출 성공</div></div>
-    <div class="hscroll-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/ymvDXP8Y/2.png" alt="케이스4"><div class="card-label">10일 만에 플레이스 상위노출 성공</div></div>
-    <div class="hscroll-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/nsVCLKcG/3.png" alt="케이스5"><div class="card-label">브랜드 블로그와 플레이스 통합 마케팅 진행</div></div>
+  <div class="cases-grid">
+    <div class="case-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/3y7jChjj/3.png" alt="케이스1"></div>
+    <div class="case-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/wZbn6yvz/2.png" alt="케이스2"></div>
+    <div class="case-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/ycpKJBpq/1.png" alt="케이스3"></div>
+    <div class="case-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/ymvDXP8Y/2.png" alt="케이스4"></div>
+    <div class="case-card" onclick="openLB(this.querySelector('img'))"><img src="https://i.ibb.co/nsVCLKcG/3.png" alt="케이스5"></div>
   </div>
 </section>
 
-<!-- ═══ SERVICES ═══ -->
 <section class="sec" id="services" style="background:var(--white);">
   <div class="sec-inner">
     <div class="center" style="margin-bottom:20px;">
       <p class="sec-label">SERVICES</p>
       <h2 class="sec-title">리본이 도와드리는 것</h2>
-      <p class="sec-desc" style="margin:0 auto;">REBORN YOUR BUSINESS.</p>
     </div>
     <div class="svc-grid">
       <div class="svc-card"><span class="svc-num">01</span><h3>브랜드 블로그</h3><p>브랜딩 디자인, 키워드 분석, 키워드 상위노출, 월간 리포트. 브랜드 히스토리를 만듭니다.</p></div>
@@ -401,90 +329,6 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
   </div>
 </section>
 
-<!-- ═══ COLUMNS (Blog) ═══ -->
-<section class="sec" id="columns" style="background:var(--bg);">
-  <div class="sec-inner">
-    <div class="center" style="margin-bottom:20px;">
-      <p class="sec-label">COLUMN</p>
-      <h2 class="sec-title">마케팅 인사이트</h2>
-      <p class="sec-desc" style="margin:0 auto;">대표님이 알아야 할 마케팅의 핵심을 칼럼으로 정리했습니다.</p>
-    </div>
-    <div class="col-grid">
-      <a class="col-card" href="javascript:void(0)" onclick="showToast()">
-        <div class="col-thumb"><span class="col-icon">📍</span><span class="col-num">01</span></div>
-        <div class="col-body">
-          <span class="col-tag">PLACE</span>
-          <h3>플레이스 상위노출, 원리부터 알아야 합니다</h3>
-          <p>검색 첫 페이지에 노출되는 원리와 비용 구조를 알기 쉽게 설명합니다.</p>
-          <span class="read-more">읽어보기 →</span>
-        </div>
-      </a>
-      <a class="col-card" href="javascript:void(0)" onclick="showToast()">
-        <div class="col-thumb"><span class="col-icon">📝</span><span class="col-num">02</span></div>
-        <div class="col-body">
-          <span class="col-tag">BLOG</span>
-          <h3>블로그 마케팅, 왜 아직도 유효한가</h3>
-          <p>AI 시대에도 블로그가 여전히 강력한 마케팅 채널인 이유.</p>
-          <span class="read-more">읽어보기 →</span>
-        </div>
-      </a>
-      <a class="col-card" href="javascript:void(0)" onclick="showToast()">
-        <div class="col-thumb"><span class="col-icon">💰</span><span class="col-num">03</span></div>
-        <div class="col-body">
-          <span class="col-tag">BUDGET</span>
-          <h3>마케팅 예산, 얼마가 적절한가요</h3>
-          <p>업종과 지역에 따른 현실적인 예산 가이드.</p>
-          <span class="read-more">읽어보기 →</span>
-        </div>
-      </a>
-      <a class="col-card" href="javascript:void(0)" onclick="showToast()">
-        <div class="col-thumb"><span class="col-icon">📸</span><span class="col-num">04</span></div>
-        <div class="col-body">
-          <span class="col-tag">INSTAGRAM</span>
-          <h3>인스타그램, 팔로워보다 전략이 먼저입니다</h3>
-          <p>숫자보다 중요한 건 방향. 장기 브랜딩 전략의 핵심.</p>
-          <span class="read-more">읽어보기 →</span>
-        </div>
-      </a>
-      <a class="col-card" href="javascript:void(0)" onclick="showToast()">
-        <div class="col-thumb"><span class="col-icon">📣</span><span class="col-num">05</span></div>
-        <div class="col-body">
-          <span class="col-tag">PROMOTION</span>
-          <h3>체험단·기자단, 효과 있나요?</h3>
-          <p>홍보단의 실제 효과와 주의할 점, 활용 전략.</p>
-          <span class="read-more">읽어보기 →</span>
-        </div>
-      </a>
-      <a class="col-card" href="javascript:void(0)" onclick="showToast()">
-        <div class="col-thumb"><span class="col-icon">🤖</span><span class="col-num">06</span></div>
-        <div class="col-body">
-          <span class="col-tag">AI & BRANDING</span>
-          <h3>AI 시대, 콘텐츠 차별화하는 법</h3>
-          <p>모두가 AI를 쓰는 시대, 브랜딩만이 유일한 차별화.</p>
-          <span class="read-more">읽어보기 →</span>
-        </div>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ EBOOK BANNER ═══ -->
-<div class="ebook-banner">
-  <div class="ebook-banner-inner">
-    <div>
-      <h2>소상공인을 위한<br>마케팅 생존 가이드 📘</h2>
-      <p>플레이스, 블로그, 그 외 채널까지. 3권 무료 PDF.</p>
-      <a href="ebook.html" class="btn-gold">무료 전자책 받기 →</a>
-    </div>
-    <div class="ebook-mini-stack">
-      <div class="ebook-mini">01</div>
-      <div class="ebook-mini">02</div>
-      <div class="ebook-mini">03</div>
-    </div>
-  </div>
-</div>
-
-<!-- ═══ INDUSTRIES ═══ -->
 <section class="sec sec-green" id="industries" style="text-align:center;">
   <div class="sec-inner">
     <p class="sec-label">INDUSTRIES</p>
@@ -501,7 +345,6 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
   </div>
 </section>
 
-<!-- ═══ PHILOSOPHY ═══ -->
 <section class="sec sec-dark" id="philosophy">
   <div class="sec-inner">
     <div class="center" style="margin-bottom:20px;">
@@ -509,15 +352,14 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
       <h2 class="sec-title">우리가 일하는 방식</h2>
     </div>
     <div class="philo-grid">
-      <div class="philo-card"><h3>노출 × 신뢰 = 매출</h3><p>노출만 되어서는 안 됩니다. 고객이 발견하고, 읽고, "여기다" 하고 문의하는 구조.<br> 노출과 신뢰가 곱해질 때 매출이 올라갑니다.</p></div>
-      <div class="philo-card"><h3>마케팅 채널 통합관리가 답입니다</h3><p>블로그, 플레이스, 인스타 등 하나의 대행사가 관리할 때,<br> 소통창구 일원화 및 콘텐츠 메시지 일관성으로 마케팅 효과가 극대화 됩니다.</p></div>
-      <div class="philo-card"><h3>공장식과는 다릅니다</h3><p>AI가 찍어내는 무의미한 콘텐츠는 저희 방식이 아닙니다.<br>저희는 한 광고주를 "제대로" 합니다.<br> 100시간의 브랜딩, 맞춤 전략. 그것이 리본마케팅입니다.</p></div>
-      <div class="philo-card"><h3>정중한 부탁</h3><p>가격표만 비교하실 분이라면, 정중하게 부탁드립니다. 뒤로 가기를 눌러주세요.<br> 가장 잘하는 곳, 가장 성실한 곳, 가장 정직한 곳을 찾으시는 분과 함께하고 싶습니다.</p></div>
+      <div class="philo-card"><h3>노출 × 신뢰 = 매출</h3><p>노출만 되어서는 안 됩니다. 고객이 발견하고, 읽고, "여기다" 하고 문의하는 구조.<br>노출과 신뢰가 곱해질 때 매출이 올라갑니다.</p></div>
+      <div class="philo-card"><h3>마케팅 채널 통합관리가 답입니다</h3><p>블로그, 플레이스, 인스타 등 하나의 대행사가 관리할 때,<br>소통창구 일원화 및 콘텐츠 메시지 일관성으로 마케팅 효과가 극대화 됩니다.</p></div>
+      <div class="philo-card"><h3>공장식과는 다릅니다</h3><p>AI가 찍어내는 무의미한 콘텐츠는 저희 방식이 아닙니다.<br>저희는 한 광고주를 "제대로" 합니다.<br>100시간의 브랜딩, 맞춤 전략. 그것이 리본마케팅입니다.</p></div>
+      <div class="philo-card"><h3>정중한 부탁</h3><p>가격표만 비교하실 분이라면, 정중하게 부탁드립니다. 뒤로 가기를 눌러주세요.<br>가장 잘하는 곳, 가장 성실한 곳, 가장 정직한 곳을 찾으시는 분과 함께하고 싶습니다.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ FAQ ═══ -->
 <section class="sec" id="faq" style="background:var(--bg);">
   <div class="sec-inner">
     <div class="center">
@@ -525,118 +367,77 @@ footer p{font-size:.75rem;color:rgba(255,255,255,.2);}
       <h2 class="sec-title">자주 묻는 질문</h2>
     </div>
     <div class="faq-list">
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">계약 기간은 어떻게 되나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">첫 계약은 기본 3개월이며 이후 월 단위 연장 가능합니다.<br> 최소 3개월은 운영해야 안정적인 성과를 확인하실 수 있습니다.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">비용은 얼마인가요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">업종, 키워드 경쟁도, 서비스 범위에 따라 달라집니다.<br> 상담 후 맞춤 견적을 안내드립니다.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">계약 기간은 어떻게 되나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">첫 계약은 기본 3개월이며 이후 월 단위 연장 가능합니다.<br>최소 3개월은 운영해야 안정적인 성과를 확인하실 수 있습니다.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">비용은 얼마인가요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">업종, 키워드 경쟁도, 서비스 범위에 따라 달라집니다.<br>상담 후 맞춤 견적을 안내드립니다.</div></div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">어떤 업종이든 가능한가요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">저희는 프리미엄 서비스를 지향하므로 고단가 업종(병원, 법률, 청소, 인테리어, 학원)에 특화되어 있습니다.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">성과가 없으면 어떻게 되나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">월간 리포트로 투명하게 공유하며, 목표 미달 시 전략을 즉시 수정합니다.<br> 80%의 콘텐츠가 상위 노출에 성공하고 있습니다.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">성과가 없으면 어떻게 되나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">월간 리포트로 투명하게 공유하며, 목표 미달 시 전략을 즉시 수정합니다.<br>80%의 콘텐츠가 상위 노출에 성공하고 있습니다.</div></div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">블로그가 없어도 시작할 수 있나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">네, 블로그 개설부터 브랜딩 디자인, 발행까지 모두 저희가 합니다.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">마케팅 하면 문의 전화가 많이 오나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">마케팅은 고객이 우리를 발견하고, 신뢰하고, 문의까지 이어지는 구조를 만드는 작업입니다.<br>이 구조를 만들면 문의가 안 오는 게 더 이상한 겁니다.<br> 리본마케팅 광고주의 평균 문의량은 운영 3개월 차부터 눈에 띄게 증가합니다.<br> 중요한 건 "한 달 반짝"이 아니라 "매달 꾸준히 들어오는 구조"입니다.</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">마케팅 예산은 얼마가 적절한가요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner"><strong style="color:var(--primary);">해당 지역 및 업계의 평균 × 대표님의 목표(욕심)</strong>입니다.<br> 마케팅 예산을 최소로 투자하여 애매한 효과를 기대하기 보다는<br> 오히려 예산을 넉넉히 투자하여 효과를 극대화하는 것이 더 바람직한 방향입니다.<br>물론 지역 및 업종에 따라서 마케팅이 거의 필요없는 곳도 있을 수 있습니다.<br>저희 업체는 광고주께 효과 없는 불필요한 마케팅을 절대 권하지 않습니다.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">마케팅 하면 문의 전화가 많이 오나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">마케팅은 고객이 우리를 발견하고, 신뢰하고, 문의까지 이어지는 구조를 만드는 작업입니다.<br>이 구조를 만들면 문의가 안 오는 게 더 이상한 겁니다.<br>리본마케팅 광고주의 평균 문의량은 운영 3개월 차부터 눈에 띄게 증가합니다.<br>중요한 건 "한 달 반짝"이 아니라 "매달 꾸준히 들어오는 구조"입니다.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">마케팅 예산은 얼마가 적절한가요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner"><strong style="color:var(--primary);">해당 지역 및 업계의 평균 × 대표님의 목표(욕심)</strong>입니다.<br>마케팅 예산을 최소로 투자하여 애매한 효과를 기대하기 보다는<br>오히려 예산을 넉넉히 투자하여 효과를 극대화하는 것이 더 바람직한 방향입니다.<br>물론 지역 및 업종에 따라서 마케팅이 거의 필요없는 곳도 있을 수 있습니다.<br>저희 업체는 광고주께 효과 없는 불필요한 마케팅을 절대 권하지 않습니다.</div></div></div>
       <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">마케팅 채널별 우선순위는요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">대체적으로 <strong style="color:var(--primary);">플레이스 상위노출</strong>을 중심으로 설정합니다.<br>(문의에 직접적인 역할을 하면서 고정비 구조이기 때문입니다.)<br><br><strong style="color:var(--red);">① 예산 ≤ 플레이스 고정비</strong> → 다른 채널 집중 (구색용 마케팅)<br><strong style="color:var(--gold);">② 예산 = 중간</strong> → 플레이스 우선 + 보조 채널 (방어용 마케팅)<br><strong style="color:var(--primary);">③ 예산 = 넉넉</strong> → 플레이스 + 다채널 동시 (공격용 마케팅)</div></div></div>
-      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">마케팅 채널은 몇 가지를 해야 효과가 좋나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">각 채널마다 특성이 달라서 여러 개를 같이 하는 게 좋습니다.<br> 시간이 지날수록 +더하기가 아니라 ×곱하기가 됩니다.<br><br><strong>블로그</strong> — 신뢰 및 노출용, 브랜드 히스토리 중장기 자산<br><strong>홍보단</strong> — 상위노출용<br><strong>플레이스</strong> — 전환(문의, 구매)에 직결, 휘발성<br><strong>인스타그램</strong> — 장기 브랜딩 및 성장용<br><strong>홈페이지</strong> — 업체 현황을 한 눈에 볼 수 있음<br><strong>당근·숨고</strong> — 지역 기반 서비스에 강점<br><strong>스레드</strong> — 중기 전략, 전통 채널에 비해 노출이 쉽다</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">마케팅 채널은 몇 가지를 해야 효과가 좋나요?<span class="arrow">▾</span></div><div class="faq-a"><div class="faq-a-inner">각 채널마다 특성이 달라서 여러 개를 같이 하는 게 좋습니다.<br>시간이 지날수록 +더하기가 아니라 ×곱하기가 됩니다.<br><br><strong>블로그</strong> — 신뢰 및 노출용, 브랜드 히스토리 중장기 자산<br><strong>홍보단</strong> — 상위노출용<br><strong>플레이스</strong> — 전환(문의, 구매)에 직결, 휘발성<br><strong>인스타그램</strong> — 장기 브랜딩 및 성장용<br><strong>홈페이지</strong> — 업체 현황을 한 눈에 볼 수 있음<br><strong>당근·숨고</strong> — 지역 기반 서비스에 강점<br><strong>스레드</strong> — 중기 전략, 전통 채널에 비해 노출이 쉽다</div></div></div>
     </div>
   </div>
 </section>
 
-<!-- ═══ FINAL CTA ═══ -->
 <section class="final-cta" id="contact">
   <h2>저희와 함께 성장할<br>파트너를 찾고 있습니다.</h2>
   <p>무료 상담으로 시작하세요. 부담 없이 편하게 연락 주세요.</p>
-  <a href="https://open.kakao.com/o/sikzYWai" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:18px;padding:20px 52px;position:relative;z-index:9999;display:inline-block;">카카오톡 무료 상담하기 →</a>
+  <a href="https://open.kakao.com/o/sikzYWai" target="_blank" rel="noopener noreferrer" class="btn-gold" style="font-size:17px;padding:20px 48px;position:relative;z-index:2;">카카오톡 무료 상담하기 →</a>
 </section>
 
-
-<!-- ═══ FOOTER ═══ -->
 <footer>
   <img src="https://i.ibb.co/FbjFQZLm/image.png" alt="리본마케팅">
   <div class="f-links">
     <a href="https://blog.naver.com/logos_mkt" target="_blank">블로그</a>
-    <a href="javascript:void(0)" onclick="showToast()"
->전자책</a>
     <a href="https://www.instagram.com/re.born_mkt" target="_blank">인스타그램</a>
   </div>
-  <p>© 2025 리본마케팅. All rights reserved.</p>
+  <p>© <script>document.write(new Date().getFullYear())</script> 리본마케팅. All rights reserved.</p>
 </footer>
 
-<!-- Floating -->
-<a href="https://open.kakao.com/o/sikzYWai" target="_blank" class="float-kakao" title="카카오톡 상담">💬</a>
+<a href="https://open.kakao.com/o/sikzYWai" target="_blank" rel="noopener noreferrer" class="float-kakao" title="카카오톡 상담">💬</a>
 
-<!-- Lightbox -->
 <div class="lb" id="lb" onclick="closeLB()"><span class="lb-close">&times;</span><img id="lbImg" src="" alt=""></div>
 
-<!-- Toast Popup -->
-<div class="toast-overlay" id="toastOverlay" onclick="hideToast()"></div>
-<div class="toast" id="toast">
-  <h3>준비중입니다</h3>
-  <p>더 좋은 콘텐츠로 곧 찾아뵙겠습니다.</p>
-  <button onclick="hideToast()">확인</button>
-</div>
-
 <script>
-/* ═══ Lenis ═══ */
 const lenis=new Lenis({duration:1.4,easing:t=>Math.min(1,1.001-Math.pow(2,-10*t))});
 function raf(time){lenis.raf(time);requestAnimationFrame(raf);}
 requestAnimationFrame(raf);
 gsap.ticker.add(t=>{lenis.raf(t*1000);});
 gsap.ticker.lagSmoothing(0);
 
-/* ═══ Scroll Progress ═══ */
 gsap.to('#progress',{width:'100%',ease:'none',scrollTrigger:{trigger:'body',start:'top top',end:'bottom bottom',scrub:.3}});
 
-/* ═══ Nav scroll ═══ */
-ScrollTrigger.create({start:'top -80',onUpdate:self=>{document.getElementById('nav').classList.toggle('scrolled',self.direction===1||window.scrollY>80);}});
-window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>80);});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
 
-/* ═══ Hero ═══ */
 const htl=gsap.timeline({delay:.3});
 htl.to('.hero-title .line span',{y:'0%',duration:1.2,stagger:.15,ease:'power4.out'})
    .to('.hero-label',{opacity:1,y:0,duration:.8,ease:'power3.out'},'-=.8')
    .to('.hero-sub',{opacity:1,y:0,duration:.8,ease:'power3.out'},'-=.5')
    .to('.hero-cta-row',{opacity:1,y:0,duration:.8,ease:'power3.out'},'-=.4');
-gsap.to('.hero-bg',{y:'30%',ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+gsap.to('.hero-bg',{y:'20%',ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 
-/* ═══ Marquee ═══ */
 gsap.to('#marquee',{x:'-50%',ease:'none',duration:20,repeat:-1});
 
-/* ═══ Split Reveals ═══ */
 document.querySelectorAll('.split').forEach(s=>{
   const overlay=s.querySelector('.img-overlay');
   const img=s.querySelector('.split-img img');
   if(overlay){
     gsap.fromTo(overlay,{scaleX:1},{scaleX:0,duration:1.2,ease:'power4.inOut',scrollTrigger:{trigger:s,start:'top 75%'}});
-    gsap.fromTo(img,{scale:1.3},{scale:1,duration:1.8,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 75%'}});
+    gsap.fromTo(img,{scale:1.2},{scale:1,duration:1.6,ease:'power3.out',scrollTrigger:{trigger:s,start:'top 75%'}});
   }
-  if(img){gsap.to(img,{y:'-15%',ease:'none',scrollTrigger:{trigger:s,start:'top bottom',end:'bottom top',scrub:true}});}
 });
 
-/* ═══ Generic Reveals ═══ */
 gsap.utils.toArray('.sec-label,.sec-title,.sec-desc').forEach(el=>{
-  gsap.fromTo(el,{opacity:0,y:40},{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%'}});
+  gsap.fromTo(el,{opacity:0,y:30},{opacity:1,y:0,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 88%'}});
 });
 
-/* ═══ Compare Cards ═══ */
 gsap.fromTo('.cmp-card',{opacity:0,y:40},{opacity:1,y:0,duration:.7,stagger:.15,ease:'power3.out',scrollTrigger:{trigger:'.compare-grid',start:'top 80%'}});
-
-/* ═══ Service Cards ═══ */
-gsap.fromTo('.svc-card',{opacity:0,y:60},{opacity:1,y:0,duration:.7,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.svc-grid',start:'top 80%'}});
-
-/* ═══ Column Cards ═══ */
-gsap.fromTo('.col-card',{opacity:0,y:50},{opacity:1,y:0,duration:.6,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.col-grid',start:'top 82%'}});
-
-/* ═══ Ebook Banner ═══ */
-gsap.fromTo('.ebook-banner-inner',{opacity:0,y:40},{opacity:1,y:0,duration:.8,ease:'power3.out',scrollTrigger:{trigger:'.ebook-banner',start:'top 80%'}});
-gsap.fromTo('.ebook-mini',{opacity:0,y:30,rotation:0},{opacity:1,y:0,duration:.6,stagger:.12,ease:'back.out(1.5)',scrollTrigger:{trigger:'.ebook-banner',start:'top 80%'},onComplete:()=>{
-  gsap.to('.ebook-mini:nth-child(1)',{rotation:-6,duration:.4,ease:'back.out(2)'});
-  gsap.to('.ebook-mini:nth-child(3)',{rotation:6,duration:.4,ease:'back.out(2)'});
-}});
-
-/* ═══ Industry Tags ═══ */
+gsap.fromTo('.case-card',{opacity:0,y:50},{opacity:1,y:0,duration:.6,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.cases-grid',start:'top 82%'}});
+gsap.fromTo('.svc-card',{opacity:0,y:50},{opacity:1,y:0,duration:.6,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'.svc-grid',start:'top 80%'}});
 gsap.fromTo('.ind-tag',{opacity:0,scale:.8},{opacity:1,scale:1,duration:.5,stagger:.05,ease:'back.out(1.5)',scrollTrigger:{trigger:'.ind-tags',start:'top 85%'}});
+gsap.fromTo('.philo-card',{opacity:0,y:40},{opacity:1,y:0,duration:.6,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'.philo-grid',start:'top 80%'}});
 
-/* ═══ Philosophy ═══ */
-gsap.fromTo('.philo-card',{opacity:0,y:40},{opacity:1,y:0,duration:.7,stagger:.12,ease:'power3.out',scrollTrigger:{trigger:'.philo-grid',start:'top 80%'}});
-
-/* ═══ Stats Count Up ═══ */
 document.querySelectorAll('.stat-num').forEach(el=>{
   const target=+el.dataset.count;const suffix=el.dataset.suffix||'';
   ScrollTrigger.create({trigger:el,start:'top 85%',once:true,onEnter:()=>{
@@ -644,35 +445,22 @@ document.querySelectorAll('.stat-num').forEach(el=>{
   }});
 });
 
-/* ═══ Horizontal Scroll ═══ */
-
-
-
-/* ═══ FAQ ═══ */
 function toggleFaq(el){
   const open=el.classList.contains('open');const a=el.nextElementSibling;
   if(open){el.classList.remove('open');a.style.maxHeight=null;}
   else{el.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';}
 }
-gsap.fromTo('.faq-item',{opacity:0,y:30},{opacity:1,y:0,duration:.5,stagger:.08,ease:'power3.out',scrollTrigger:{trigger:'.faq-list',start:'top 85%'}});
+gsap.fromTo('.faq-item',{opacity:0,y:20},{opacity:1,y:0,duration:.4,stagger:.06,ease:'power3.out',scrollTrigger:{trigger:'.faq-list',start:'top 85%'}});
 
-/* ═══ Final CTA ═══ */
-gsap.fromTo('.final-cta h2',{opacity:0,y:60,scale:.95},{opacity:1,y:0,scale:1,duration:1,ease:'power3.out',scrollTrigger:{trigger:'.final-cta',start:'top 75%'}});
-gsap.fromTo('.final-cta p',{opacity:0},{opacity:1,duration:.8,delay:.2,scrollTrigger:{trigger:'.final-cta',start:'top 75%'}});
+gsap.fromTo('.final-cta h2',{opacity:0,y:50},{opacity:1,y:0,duration:1,ease:'power3.out',scrollTrigger:{trigger:'.final-cta',start:'top 75%'}});
 
-/* ═══ Lightbox ═══ */
 function openLB(img){document.getElementById('lbImg').src=img.src;document.getElementById('lb').classList.add('show');lenis.stop();}
 function closeLB(){document.getElementById('lb').classList.remove('show');lenis.start();}
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeLB();hideToast();}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB();});
 
-/* ═══ Toast (칼럼 준비중) ═══ */
-function showToast(){document.getElementById('toastOverlay').classList.add('show');document.getElementById('toast').classList.add('show');}
-function hideToast(){document.getElementById('toastOverlay').classList.remove('show');document.getElementById('toast').classList.remove('show');}
-
-/* ═══ Mobile Nav ═══ */
 document.getElementById('mobToggle').addEventListener('click',()=>{document.getElementById('navMenu').classList.toggle('open');});
+document.querySelectorAll('.nav-right a').forEach(a=>{a.addEventListener('click',()=>{document.getElementById('navMenu').classList.remove('open');});});
 
-/* ═══ Smooth Anchor ═══ */
 document.querySelectorAll('a').forEach(a=>{
   const href=a.getAttribute('href');
   if(!href||!href.startsWith('#'))return;
@@ -683,7 +471,6 @@ document.querySelectorAll('a').forEach(a=>{
     document.getElementById('navMenu').classList.remove('open');
   });
 });
-
 </script>
 </body>
 </html>
